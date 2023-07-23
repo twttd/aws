@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: learn-aws-kubectl
+spec:
+  containers:
+  - name: learn-aws-kubectl-docker
+    image: learn-aws:3.0
+    command: ["java"]
+    args: ["-jar", "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005", "/usr/target/aws-0.0.1-SNAPSHOT.jar"]
+    ports:
+    - containerPort: 8080
+    - containerPort: 5005
